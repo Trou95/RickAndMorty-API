@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/azure-sql-edge
+    container_name: sql-azure
+    env_file:
+      - .env.development
+    ports:
+      - "1433:1433"
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - $HOME/data/RickAndMorty:/var/opt/mssql
